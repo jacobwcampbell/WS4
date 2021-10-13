@@ -1,0 +1,37 @@
+.maintitle{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 72px;
+    grid-column: 2;
+    grid-row: 1;
+    text-align: center;
+}
+
+.maintext{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    grid-column: 2;
+    grid-row: 2;
+    text-align: center;
+}
+
+.mainlink{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    text-align: center;
+}
+
+#projectfilelink{
+    grid-column: 2;
+    grid-row: 3;
+}
+
+#githubrepolink{
+    grid-column: 2;
+    grid-row: 4;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-rows: 1fr 1fr 50px 50px;
+}
