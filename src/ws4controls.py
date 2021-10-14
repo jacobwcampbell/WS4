@@ -17,14 +17,13 @@ class Ws4:
         self.pitch_pin = pitch_pin
         self.yaw_pin = yaw_pin
         self.fire_pin = fire_pin
-        pitch_servo = Servo(pitch_pin, initial_value=False)
-        yaw_servo = Servo(yaw_pin, initial_value=False)
-        fire_relay = DigitalOutputDevice(fire_pin, initial_value=False)
+        self.pitch_servo = Servo(pitch_pin, initial_value=False)
+        self.yaw_servo = Servo(yaw_pin, initial_value=False)
+        self.fire_relay = DigitalOutputDevice(fire_pin, initial_value=False)
 
 
-    def fire(duration=5):
-
+    def fire(self,duration=5):
         print("Fired!")
-        fire_relay.on()
+        self.fire_relay.on()
         sleep(duration)
-        fire_relay.off()
+        self.fire_relay.off()
