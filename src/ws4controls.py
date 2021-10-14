@@ -1,5 +1,5 @@
 from _typeshed import Self
-from gpiozero import Servo, DigitalOutputDevice
+from gpiozero import AngularServo, DigitalOutputDevice
 from time import sleep
 #gpizero is pre-installed on raspbian
 
