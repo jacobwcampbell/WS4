@@ -27,3 +27,13 @@ class Ws4:
         self.fire_relay.on()
         sleep(duration)
         self.fire_relay.off()
+
+
+
+class Ws4dummy:
+    
+    def __init__(self):
+        pass
+
+    def fire(self):
+        print("Fired!")
