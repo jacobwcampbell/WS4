@@ -3,7 +3,7 @@ from time import sleep
 #gpizero is pre-installed on raspbian
 
 
-class Ws4:
+class Ws4(object):
     '''
     This is a class to control all GPIO, Physical aspects of the device
     
@@ -30,7 +30,7 @@ class Ws4:
 
 
 
-class Ws4dummy:
+class Ws4dummy(object):
     
     def __init__(self):
         pass
