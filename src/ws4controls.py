@@ -37,8 +37,6 @@ class Ws4(object):
         self.pitch_servo.mid()
     
 
-
-
     def fire(self,duration=5):
         print("Fired!")
         self.fire_relay.on()
@@ -81,3 +79,6 @@ class Ws4dummy(object):
 
     def move_down(self):
         print("Turned Down!")
+
+    def location(self):
+        return "Yaw:"+self.yaw_servo.angle+"  Pitch:"+self.pitch_servo.angle
