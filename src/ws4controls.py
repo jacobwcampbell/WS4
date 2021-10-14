@@ -21,10 +21,22 @@ class Ws4(object):
         self.pitch_servo = AngularServo(pitch_pin, min_angle=-90, max_angle=90, initial_value=False)
         self.yaw_servo = AngularServo(yaw_pin, min_angle=-90, max_angle=90,  initial_value=False)
         self.fire_relay = DigitalOutputDevice(fire_pin, initial_value=False)
+        self.calibrate()
 
     def calibrate(self):
+        self.yaw_servo.min()
+        sleep(1)
+        self.yaw_servo.max()
+        sleep(1)
+        self.yaw_servo.mid()
+        sleep(1)
         self.pitch_servo.min()
-        self.yaw_servo
+        sleep(1)
+        self.pitch_servo.max()
+        sleep(1)
+        self.pitch_servo.mid()
+    
+
 
 
     def fire(self,duration=5):
