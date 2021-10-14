@@ -1,5 +1,6 @@
 from gpiozero import AngularServo, DigitalOutputDevice
 from time import sleep
+from random import randint
 #gpizero is pre-installed on raspbian
 
 
@@ -36,8 +37,6 @@ class Ws4(object):
         self.pitch_servo.mid()
     
 
-
-
     def fire(self,duration=5):
         print("Fired!")
         self.fire_relay.on()
@@ -61,6 +60,10 @@ class Ws4(object):
         if self.pitch_servo.angle > -90:
             self.pitch_servo.angle -=turn_amount
 
+    def location(self):
+        return "Yaw:"+self.yaw_servo.angle+"  Pitch:"+self.pitch_servo.angle
+
+
 class Ws4dummy(object):
     
     def __init__(self):
@@ -80,3 +83,6 @@ class Ws4dummy(object):
 
     def move_down(self):
         print("Turned Down!")
+
+    def location(self):
+        return "Yaw:"+randint(0,90)+" Pitch"+randint(0,90)
