@@ -1,3 +1,4 @@
+from _typeshed import Self
 from gpiozero import Servo, DigitalOutputDevice
 from time import sleep
 #gpizero is pre-installed on raspbian
@@ -17,8 +18,8 @@ class Ws4(object):
         self.pitch_pin = pitch_pin
         self.yaw_pin = yaw_pin
         self.fire_pin = fire_pin
-        self.pitch_servo = Servo(pitch_pin, initial_value=False)
-        self.yaw_servo = Servo(yaw_pin, initial_value=False)
+        self.pitch_servo = AngularServo(pitch_pin, min_angle=-90, max_angle=90, initial_value=False)
+        self.yaw_servo = AngularServo(yaw_pin, min_angle=-90, max_angle=90,  initial_value=False)
         self.fire_relay = DigitalOutputDevice(fire_pin, initial_value=False)
 
 
@@ -29,6 +30,21 @@ class Ws4(object):
         self.fire_relay.off()
 
 
+    def move_right(self,turn_amount=10):
+        if self.yaw_servo.angle < 90:
+            self.yaw_servo.angle +=turn_amount
+    
+    def move_left(self,turn_amount=10):
+        if self.yaw_servo.angle > -90:
+            self.yaw_servo.angle -=turn_amount
+
+    def move_up(self,turn_amount=10):
+        if self.pitch_servo.angle < 90:
+            self.pitch_servo.angle +=turn_amount
+
+    def move_down(self,turn_amount=10):
+        if self.pitch_servo.angle > -90:
+            self.pitch_servo.angle -=turn_amount
 
 class Ws4dummy(object):
     
