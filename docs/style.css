@@ -20,6 +20,18 @@
     text-align: center;
 }
 
+.donorheading{
+    margin: 0;
+    text-align: center;
+    font-size: 36px;
+    grid-row: 5;
+    grid-column: 2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+
+
 #projectfilelink{
     grid-column: 2;
     grid-row: 3;
@@ -33,5 +45,24 @@
 #container{
     display: grid;
     grid-template-columns: 0.5fr 1fr 0.5fr;
-    grid-template-rows: 1fr 1fr 50px 50px;
+    grid-template-rows: 0.1fr 0.5fr 50px 50px 50px 50px;
+}
+
+
+.donor{
+    animation: donor-colour-change 10s infinite;
+    grid-column: 2;
+    grid-row: 6;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+
+@keyframes donor-colour-change{
+    0% {color:#f20800;}
+    20% {color: #fd8b00;}
+    40% {color: #e7e200;}
+    60% {color: #30d800}
+    80% {color:#3c70ef}
+    100% {color: #5e02e9}
 }

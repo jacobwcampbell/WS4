@@ -15,8 +15,9 @@ class Ws4(object):
     '''
 
     def __init__(self,pitch_pin,yaw_pin,fire_pin):
+        '''Sets up the physical GPIO pins that the device uses to control the motors and relays'''
         self.pitch_pin = pitch_pin
-        self.yaw_pin = yaw_pin
+        self.yaw_pin = yaw_pin        
         self.fire_pin = fire_pin
         self.pitch_servo = AngularServo(pitch_pin, min_angle=-90, max_angle=90, initial_value=False)
         self.yaw_servo = AngularServo(yaw_pin, min_angle=-90, max_angle=90,  initial_value=False)
@@ -24,6 +25,7 @@ class Ws4(object):
         self.calibrate()
 
     def calibrate(self):
+        '''Moves each servo to it's minimum and maximum positions, before returning to it's neutral position (0 degrees relative)'''
         self.yaw_servo.min()
         sleep(1)
         self.yaw_servo.max()
@@ -38,6 +40,7 @@ class Ws4(object):
     
 
     def fire(self,duration=5):
+        '''Activates the relay, which is connected to the fire mechanism. The duration determines how long the device will fire for'''
         print("Fired!")
         self.fire_relay.on()
         sleep(duration)
@@ -45,6 +48,7 @@ class Ws4(object):
 
 
     def move_right(self,turn_amount=10):
+        '''Moves the yaw (L/R) motor by a relative amount, which is the turn_amount parameter. The if statement stops the Servo.angle value from increasing beyond it's maximum '''
         if self.yaw_servo.angle < 90:
             self.yaw_servo.angle +=turn_amount
     
@@ -61,15 +65,17 @@ class Ws4(object):
             self.pitch_servo.angle -=turn_amount
 
     def move_to(self,yaw_position,pitch_position):
+        '''Takes a yaw and pitch position between -90 and 90 degrees and sets the Servo.angle values to that, instead of increasing by pre-defined 'steps' '''
         self.yaw_servo.angle = yaw_position
         self.pitch_servo.angle = pitch_position
 
     def location(self):
+        '''Returns the current yaw and pitch position of both servo's'''
         return "Yaw:"+self.yaw_servo.angle+"  Pitch:"+self.pitch_servo.angle
 
 
 class Ws4dummy(object):
-    
+    '''A Dummy version of the main class, used to initially test the web interface, via printing statements instead of activating servos'''
     def __init__(self):
         pass
 
