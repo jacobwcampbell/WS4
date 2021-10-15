@@ -4,11 +4,11 @@ from flask import Flask
 app = Flask(__name__)
 ws4inter = Ws4dummy()
 
-homepage = open("index.html")
+homepage = open("index.html").read()
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def home():
-    return homepage.read()
+    return homepage
 
 @app.route("/fire", methods = ["POST"])
 def fire():

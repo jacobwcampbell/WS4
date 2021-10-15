@@ -11,7 +11,11 @@
 {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 40px;
-    padding: 10px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #camera-space
@@ -78,11 +82,15 @@ THIS IS WHERE THE CAMERA WILL GO
 <div id="control-btn-div">
 
 <button class="control-btns" onclick="sendfire()">Fire</button>
+<br /><br />
 
-<button class="control-btns" onclick="sendup()">Up</button>
-<button class="control-btns" onclick="sendleft()">Left</button>
-<button class="control-btns" onclick="sendright()">Right</button>
-<button class="control-btns" onclick="senddown()">Down</button>
+<button class="control-btns" onclick="sendup()">&uarr;</button>
+<br />
+<button class="control-btns" onclick="sendleft()">&larr;</button>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<button class="control-btns" onclick="sendright()">&rarr;</button>
+<br />
+<button class="control-btns" onclick="senddown()">&darr;</button>
 
 </div>
 
