@@ -60,6 +60,10 @@ class Ws4(object):
         if self.pitch_servo.angle > -90:
             self.pitch_servo.angle -=turn_amount
 
+    def move_to(self,yaw_position,pitch_position):
+        self.yaw_servo.angle = yaw_position
+        self.pitch_servo.angle = pitch_position
+
     def location(self):
         return "Yaw:"+self.yaw_servo.angle+"  Pitch:"+self.pitch_servo.angle
 
