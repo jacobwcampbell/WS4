@@ -1,14 +1,17 @@
+import ws4video
 from ws4controls import Ws4dummy
-from flask import Flask
+from flask import Flask, render_template, Response
 
 app = Flask(__name__)
 ws4inter = Ws4dummy()
 
-homepage = open("index.html").read()
-
 @app.route("/", methods=["GET"])
 def home():
-    return homepage
+    return render_template("index.html")
+
+@app.route("/video_feed")
+def video_feed():
+    return Response(ws4video.gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route("/fire", methods = ["POST"])
 def fire():
