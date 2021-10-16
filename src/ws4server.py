@@ -1,9 +1,10 @@
 import ws4video
-from ws4controls import Ws4dummy
+import ws4controls
+
 from flask import Flask, render_template, Response
 
 app = Flask(__name__)
-ws4inter = Ws4dummy()
+ws4inter = ws4controls.Ws4dummy()
 
 @app.route("/", methods=["GET"])
 def home():
