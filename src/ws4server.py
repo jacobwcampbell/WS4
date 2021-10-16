@@ -25,14 +25,4 @@ def right():
     ws4inter.move_right()
     return "Turned right"
 
-@app.route("/up", methods = ["POST"])
-def up():
-    ws4inter.move_up()
-    return "Turned up"
-
-@app.route("/down", methods = ["POST"])
-def down():
-    ws4inter.move_down()
-    return "Turned down"
-
 app.run(host="0.0.0.0")

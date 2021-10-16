@@ -12,8 +12,8 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 40px;
     border-radius: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -55,18 +55,6 @@ function sendright() {
     request.send()
 }
 
-function sendup() {
-    let request = new XMLHttpRequest();
-    request.open("POST", "up", true);
-    request.send()
-}
-
-function senddown() {
-    let request = new XMLHttpRequest();
-    request.open("POST", "down", true);
-    request.send()
-}
-
 </script>
 
 </head>
@@ -84,13 +72,9 @@ THIS IS WHERE THE CAMERA WILL GO
 <button class="control-btns" onclick="sendfire()">Fire</button>
 <br /><br />
 
-<button class="control-btns" onclick="sendup()">&uarr;</button>
-<br />
 <button class="control-btns" onclick="sendleft()">&larr;</button>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp;
 <button class="control-btns" onclick="sendright()">&rarr;</button>
-<br />
-<button class="control-btns" onclick="senddown()">&darr;</button>
 
 </div>
 
