@@ -1,6 +1,7 @@
 import ws4video as video
 import ws4controls as controls
 
+from threading import Thread
 from flask import Flask, render_template, Response
 
 flaskapp = Flask(__name__)
@@ -16,17 +17,20 @@ def video_feed():
 
 @flaskapp.route("/fire", methods = ["POST"])
 def fire():
-    ws4inter.fire()
+    thr = Thread(target=ws4inter.fire)
+    thr.start()
     return "Fired"
 
 @flaskapp.route("/left", methods = ["POST"])
 def left():
-    ws4inter.move_left()
+    thr = Thread(target=ws4inter.move_left)
+    thr.start()
     return "Turned left"
 
 @flaskapp.route("/right", methods = ["POST"])
 def right():
-    ws4inter.move_right()
+    thr = Thread(target=ws4inter.move_right)
+    thr.start()
     return "Turned right"
 
 if __name__=="__main__":
