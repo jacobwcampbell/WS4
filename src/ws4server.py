@@ -29,4 +29,5 @@ def right():
     ws4inter.move_right()
     return "Turned right"
 
-flaskapp.run(host="0.0.0.0")
+if __name__=="__main__":
+    flaskapp.run(host="0.0.0.0")
