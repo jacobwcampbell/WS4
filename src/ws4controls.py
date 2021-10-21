@@ -3,7 +3,6 @@ from time import sleep
 from random import randint
 #gpizero is pre-installed on raspbian
 
-
 class Ws4(object):
     '''
     This is a class to control all GPIO, Physical aspects of the device
@@ -14,13 +13,13 @@ class Ws4(object):
         fire_pin(int) - This is the BCM number of the GPIO pin connected to the 'fire' relay, which closes the circuit for the device's firing mechanism
     '''
 
-    def __init__(self,pitch_pin,yaw_pin,fire_pin):
+    def __init__(self, pitch_pin, yaw_pin, fire_pin):
         '''Sets up the physical GPIO pins that the device uses to control the motors and relays'''
         self.pitch_pin = pitch_pin
         self.yaw_pin = yaw_pin        
         self.fire_pin = fire_pin
         self.pitch_servo = AngularServo(pitch_pin, min_angle=-90, max_angle=90, initial_value=False)
-        self.yaw_servo = AngularServo(yaw_pin, min_angle=-90, max_angle=90,  initial_value=False)
+        self.yaw_servo = AngularServo(yaw_pin, min_angle=-90, max_angle=90, initial_value=False)
         self.fire_relay = DigitalOutputDevice(fire_pin, initial_value=False)
         self.calibrate()
 
@@ -39,7 +38,7 @@ class Ws4(object):
         self.pitch_servo.mid()
     
 
-    def fire(self,duration=5):
+    def fire(self, duration=5):
         '''Activates the relay, which is connected to the fire mechanism. The duration determines how long the device will fire for'''
         print("Fired!")
         self.fire_relay.on()
@@ -47,24 +46,24 @@ class Ws4(object):
         self.fire_relay.off()
 
 
-    def move_right(self,turn_amount=10):
+    def move_right(self, turn_amount=10):
         '''Moves the yaw (L/R) motor by a relative amount, which is the turn_amount parameter. The if statement stops the Servo.angle value from increasing beyond it's maximum '''
         if self.yaw_servo.angle < 90:
-            self.yaw_servo.angle +=turn_amount
+            self.yaw_servo.angle += turn_amount
     
-    def move_left(self,turn_amount=10):
+    def move_left(self, turn_amount=10):
         if self.yaw_servo.angle > -90:
-            self.yaw_servo.angle -=turn_amount
+            self.yaw_servo.angle -= turn_amount
 
-    def move_up(self,turn_amount=10):
+    def move_up(self, turn_amount=10):
         if self.pitch_servo.angle < 90:
-            self.pitch_servo.angle +=turn_amount
+            self.pitch_servo.angle += turn_amount
 
-    def move_down(self,turn_amount=10):
+    def move_down(self, turn_amount=10):
         if self.pitch_servo.angle > -90:
-            self.pitch_servo.angle -=turn_amount
+            self.pitch_servo.angle -= turn_amount
 
-    def move_to(self,yaw_position,pitch_position):
+    def move_to(self, yaw_position, pitch_position):
         '''Takes a yaw and pitch position between -90 and 90 degrees and sets the Servo.angle values to that, instead of increasing by pre-defined 'steps' '''
         self.yaw_servo.angle = yaw_position
         self.pitch_servo.angle = pitch_position
