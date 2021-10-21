@@ -1,11 +1,13 @@
 import ws4video as video
 import ws4controls as controls
 
+from cv2 import VideoCapture
 from threading import Thread
 from flask import Flask, render_template, Response
 
 flaskapp = Flask(__name__)
 ws4inter = controls.Ws4dummy()
+camera = VideoCapture(0)
 
 @flaskapp.route("/", methods=["GET"])
 def home():
@@ -13,7 +15,7 @@ def home():
 
 @flaskapp.route("/video_feed")
 def video_feed():
-    return Response(video.gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(video.gen_frames(camera), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @flaskapp.route("/fire", methods = ["POST"])
 def fire():

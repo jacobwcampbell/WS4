@@ -1,8 +1,6 @@
 import cv2 as opencv
 
-camera = opencv.VideoCapture(0)
-
-def gen_frames():
+def gen_frames(camera):
     """Generator function that continuously yields frames from a webcam connected to the client device"""
     while True:
         success, frame = camera.read()
